@@ -10,17 +10,6 @@ class CLIApp::CLI
 
   def list_articles
     #should call on an articles method that scrapes/puts this data
-    puts <<-DOC
-    1. Will this Brooklyn startup allow everyone to make professional-quality content?
-        - Published on DATE
-        - Published by PERSON
-    2. Up Top Acres is planning to grow rooftop farming in the DMV
-        - Published on DATE
-        - Published by PERSON
-    3. Free Code Camp Philly: A career changer's way to give back
-        - Published on DATE
-        - Published by PERSON
-    DOC
     @articles = CLIApp::Articles.today
   end
 
