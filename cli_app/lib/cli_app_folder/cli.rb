@@ -21,7 +21,6 @@ class CLIApp::CLI
   end
 
   def selection
-
     input = nil
     while input != "exit"
       puts "Please enter the number of the article you would like to read,"
@@ -36,6 +35,8 @@ class CLIApp::CLI
           puts        "URL: #{the_article.url}"
         elsif input == "list"
           list_articles
+        elsif input == "exit"
+          goodbye
         else
           puts "I'm not sure what you mean by that."
         end #if statement
