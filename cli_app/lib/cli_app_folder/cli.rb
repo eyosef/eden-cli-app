@@ -10,7 +10,11 @@ class CLIApp::CLI
 
   def list_articles
     #should call on an articles method that scrapes/puts this data
+    puts "Check out these articles:"
     @articles = CLIApp::Articles.today
+    @articles.each.with_index(1) do |article, i|
+      puts "#{i}. #{article}"
+    end #each iteration
   end
 
   def selection
@@ -21,18 +25,13 @@ class CLIApp::CLI
       puts "type list to receive the complete list of articles,"
       puts "or type exit to leave."
       input = gets.strip
-      case input
-        when "1"
-          puts "Thank you for selecting article #1. Your article is coming up... "
-        when "2"
-          puts "Thank you for selecting article #2. Your article is coming up... "
-        when "3"
-          puts "Thank you for selecting article #3. Your article is coming up... "
-        when "list"
+        if input.to_i > 0
+          puts @articles[input.to_i-1]
+        elsif input == "list"
           list_articles
         else
           puts "I'm not sure what you mean by that."
-      end #case
+        end #if statement
     end #while loop
   end #selection method
 
@@ -41,3 +40,14 @@ class CLIApp::CLI
   end
 
 end
+
+# case input
+#   when "1"
+#     puts "Thank you for selecting article #1. Your article is coming up... "
+#   when "2"
+#     puts "Thank you for selecting article #2. Your article is coming up... "
+#   when "3"
+#     puts "Thank you for selecting article #3. Your article is coming up... "
+#   when "list"
+#     list_articles
+#   else
