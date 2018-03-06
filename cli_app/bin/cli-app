@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+
+require_relative './rube_cli_app'
+
+
+
+CLIApp::CLI.new.call
