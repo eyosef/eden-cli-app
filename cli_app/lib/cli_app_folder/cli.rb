@@ -13,7 +13,10 @@ class CLIApp::CLI
     puts "Check out these articles:"
     @articles = CLIApp::Articles.today
     @articles.each.with_index(1) do |article, i|
-      puts "#{i}. #{article}"
+      puts "#{i}. #{article.name}"
+      puts        "Published on #{article.date}"
+      puts        "Author: #{article.author}"
+      puts        "URL: #{article.url}"
     end #each iteration
   end
 
@@ -26,7 +29,11 @@ class CLIApp::CLI
       puts "or type exit to leave."
       input = gets.strip
         if input.to_i > 0
-          puts @articles[input.to_i-1]
+          the_article = @articles[input.to_i-1]
+          puts "#{the_article.name}"
+          puts        "Published on #{the_article.date}"
+          puts        "Author: #{the_article.author}"
+          puts        "URL: #{the_article.url}"
         elsif input == "list"
           list_articles
         else
