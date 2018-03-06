@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
-
-require_relative './rube_cli_app'
+require_relative '../lib/rube_cli_app'
 
 
 
