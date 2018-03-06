@@ -4,6 +4,7 @@ class CLIApp::CLI
   def call
     puts "Today's articles:"
     list_articles
+    selection
   end
 
   def list_articles
@@ -20,5 +21,18 @@ class CLIApp::CLI
         - Published by PERSON
     DOC
   end
+
+  def selection
+    puts "Please enter the number of the article you would like to read."
+    input = gets.strip
+    case input
+      when "1"
+        puts "Thank you for selecting article #1. Your article is coming up... "
+      when "2"
+        puts "Thank you for selecting article #2. Your article is coming up... "
+      when "3"
+        puts "Thank you for selecting article #3. Your article is coming up... "
+    end #case
+  end #selection method
 
 end
