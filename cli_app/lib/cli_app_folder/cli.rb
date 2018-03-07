@@ -5,11 +5,11 @@ require_relative 'articles'
 class Initialize #CLIApp::CLI
 
   def call
-    self.list_articles
+    list_articles
     selection
   end
 
-  def self.list_articles
+  def list_articles
     #should call on an articles method that scrapes/puts this data
     puts "Check out these articles:"
     @@articles = Articles.today #CLIApp::Articles.today
@@ -20,8 +20,6 @@ class Initialize #CLIApp::CLI
         # puts        "Published on #{article.date}"
         # puts        "Author: #{article.author}"
         puts "URL: #{article.url}"
-        binding.pry
-
       end #each iteration
     end #each iteration
   end
@@ -42,26 +40,11 @@ class Initialize #CLIApp::CLI
         elsif input.to_i - 1 >= @@articles.length
           puts "I'm not sure what you mean by that."
         else input.to_i > 0 && input.to_i - 1 <= @@articles.length
-          the_article = @@articles[input.to_i - 1]
-
-          @@articles.each.with_index(1) do |array, i|
-              puts "#{i}."
-            array.each.with_index do |article, i|
-              puts "Title: #{article.name}"
-              # puts        "Published on #{article.date}"
-              # puts        "Author: #{article.author}"
-              puts "URL: #{article.url}"
-              binding.pry
-
-            end #each iteration
-          end #each iteration
-
-
-
-          puts "#{the_article.name}"
-          # puts        "Published on #{the_article.date}"
-          # puts        "Author: #{the_article.author}"
-          puts        "URL: #{the_article.url}"
+            the_article = @@articles[input.to_i - 1]
+            the_article.each.with_index(1) do |article, i|
+                puts "Article: #{article.name}."
+                puts "URL: #{article.url}"
+            end #each with index
         end #if statement
     end #while loop
   end #selection method
@@ -71,5 +54,3 @@ class Initialize #CLIApp::CLI
   end
 
 end
-
-Initialize.list_articles
