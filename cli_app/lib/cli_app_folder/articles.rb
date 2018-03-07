@@ -25,12 +25,14 @@ class Articles #CLIApp::Articles
 
     article = {}
 
-    technically.css(".network-posts").children.each do |article|
+    #technically.css(".network-posts").children.each do |article|
+    technically.css(".network-posts-link").children.each do |article|
           binding.pry
-          unless article == (Text " ")
-           url = article.attribute("href").value
+          if article.include?("href")
+            url = article.attribute("href").value
+          else article.include?("title")
            title = article.attribute("title").value
-         end
+          end
     end
   end
 
