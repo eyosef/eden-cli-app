@@ -8,7 +8,6 @@ Gem::Specification.new do |spec|
   spec.version       = CLIApp::VERSION
   spec.authors       = ["Eden"]
   spec.email         = ["emesfun@gmail.com"]
-
   spec.summary       = %q{Project that lists articles from a scrapped website.}
   spec.homepage      = "https://github.com/eyosef/eden-cli-app"
   spec.license       = "MIT"
@@ -34,5 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "pry"
 
-  spec.add_dependency "nokogiri"
+  spec.add_development_dependency "nokogiri" #  spec.add_dependency "nokogiri"
 end

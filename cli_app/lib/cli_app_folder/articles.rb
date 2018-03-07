@@ -1,36 +1,32 @@
 require 'nokogiri'
 require 'HTTParty'
 
+
 class CLIApp::Articles
 
   attr_accessor :name, :date, :author, :url, :website
 
-  def initialize
-    doc = HTTParty.get("https://technical.ly/")
-    @website = ||= Nokogiri::HTML(doc)
-  end
+  # def self.today
+  #   #scrape Technicaly
+  #   #return articles based on that data
+  #   self.scrape_articles
+  #
+  # end
+  #
+  # def self.scrape_tech
+  #
+  #   website = File.read('https://technical.ly/')
+  #   technically = Nokogiri::HTML(website)
+  #
+  # end
 
+  def self.testing
+    website = File.read('https://technical.ly/')
+    technically = Nokogiri::HTML(website)
+    binding.pry
+  end
 
   def self.today
-    #scrape Technicaly
-    #return articles based on that data
-    self.scrape_articles
-
-  end
-
-  def self.scrape_tech
-    doc = HTTParty.get("https://technical.ly/")
-    @website = ||= Nokogiri::HTML(doc)
-
-    # website = File.read('https://technical.ly/')
-    # technically = Nokogiri::HTML(website)
-  end
-
-  def self.scrape_articles
-    articles = []
-
-    articles << self.scrape_tech
-
 
     #go to technicaly, find Articles
     #extract Articles
