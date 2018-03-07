@@ -5,7 +5,7 @@ require_relative 'articles'
 class Initialize #CLIApp::CLI
 
   def call
-    list_articles
+    self.list_articles
     selection
   end
 
@@ -16,12 +16,11 @@ class Initialize #CLIApp::CLI
     @@articles.each.with_index(1) do |array, i|
         puts "#{i}."
       array.each.with_index do |article, i|
-
         puts "Title: #{article.name}"
         # puts        "Published on #{article.date}"
         # puts        "Author: #{article.author}"
         puts "URL: #{article.url}"
-
+        binding.pry
 
       end #each iteration
     end #each iteration
@@ -44,6 +43,21 @@ class Initialize #CLIApp::CLI
           puts "I'm not sure what you mean by that."
         else input.to_i > 0 && input.to_i - 1 <= @@articles.length
           the_article = @@articles[input.to_i - 1]
+
+          @@articles.each.with_index(1) do |array, i|
+              puts "#{i}."
+            array.each.with_index do |article, i|
+              puts "Title: #{article.name}"
+              # puts        "Published on #{article.date}"
+              # puts        "Author: #{article.author}"
+              puts "URL: #{article.url}"
+              binding.pry
+
+            end #each iteration
+          end #each iteration
+
+
+
           puts "#{the_article.name}"
           # puts        "Published on #{the_article.date}"
           # puts        "Author: #{the_article.author}"
