@@ -1,5 +1,6 @@
 #our CLI controller - responsible for business logic/user interactions
 require 'pry'
+
 class Initialize #CLIApp::CLI
 
   def call
