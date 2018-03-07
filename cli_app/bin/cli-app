@@ -3,6 +3,6 @@
 require_relative '../lib/rube_cli_app'
 
 
-
-CLIApp::CLI.new.call
+Initialize.new.call
+#CLIApp::CLI.new.call
 #CLIApp::Articles.scrape_articles

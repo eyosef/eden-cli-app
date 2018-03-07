@@ -1,10 +1,39 @@
 require 'nokogiri'
 require 'HTTParty'
+require 'pry'
 
 
-class CLIApp::Articles
+
+class Articles #CLIApp::Articles
 
   attr_accessor :name, :date, :author, :url, :website
+
+  def initialize
+    @name = name
+    @date = date
+    @author = author
+    @url = url
+    @website = website
+  end
+
+
+  def self.testing
+    puts "We're inside of this method. Woo-hoo!"
+    website = HTTParty.get("https://technical.ly/dc/")
+    technically = Nokogiri::HTML(website)
+    technically.css(".network-post-link")
+
+    article = {}
+
+    technically.css(".network-posts").children.each do |article|
+          binding.pry
+          unless article == (Text " ")
+           url = article.attribute("href").value
+           title = article.attribute("title").value
+         end
+    end
+  end
+
 
   # def self.today
   #   #scrape Technicaly
@@ -20,11 +49,6 @@ class CLIApp::Articles
   #
   # end
 
-  def self.testing
-    website = File.read('https://technical.ly/')
-    technically = Nokogiri::HTML(website)
-    binding.pry
-  end
 
   def self.today
 
@@ -53,4 +77,6 @@ class CLIApp::Articles
     [article1, article2, article3]
   end
 
-end
+end #class
+
+Articles.testing

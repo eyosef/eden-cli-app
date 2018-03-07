@@ -1,5 +1,5 @@
 #our CLI controller - responsible for business logic/user interactions
-class CLIApp::CLI
+class Initialize#CLIApp::CLI
 
   def call
     list_articles
@@ -9,7 +9,7 @@ class CLIApp::CLI
   def list_articles
     #should call on an articles method that scrapes/puts this data
     puts "Check out these articles:"
-    @@articles = CLIApp::Articles.today
+    @@articles = Articles.today #CLIApp::Articles.today
     @@articles.each.with_index(1) do |article, i|
       puts "#{i}. #{article.name}"
       puts        "Published on #{article.date}"
@@ -25,24 +25,20 @@ class CLIApp::CLI
       puts "type list to receive the complete list of articles,"
       puts "or type exit to leave."
       input = gets.strip
-        if input == "exit"
-          goodbye
-        elsif input == "list"
+        if input == "list"
           list_articles
+        elsif input == "exit"
+          goodbye
         elsif input.to_i - 1 < 0
           puts "I'm not sure what you mean by that."
-        elsif input.to_i - 1 > @@articles.length
+        elsif input.to_i - 1 >= @@articles.length
           puts "I'm not sure what you mean by that."
-        elsif input.to_i > 0 && input.to_i - 1 <= @@articles.length
+        else input.to_i > 0 && input.to_i - 1 <= @@articles.length
           the_article = @@articles[input.to_i - 1]
           puts "#{the_article.name}"
           puts        "Published on #{the_article.date}"
           puts        "Author: #{the_article.author}"
           puts        "URL: #{the_article.url}"
-        elsif input == "list"
-          list_articles
-        else input == "exit"
-          goodbye
         end #if statement
     end #while loop
   end #selection method
