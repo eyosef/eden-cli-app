@@ -23,12 +23,16 @@ class Articles #CLIApp::Articles
     technically = Nokogiri::HTML(website)
     technically.css(".network-post-link")
 
-    article = {}
+    articles = []
 
     technically.css(".network-posts").children.each do |article|
         unless article.blank?
-          url = article.attribute("href").value
-          title = article.attribute("title").value
+          
+          @url = article.attribute("href").value
+          @name = article.attribute("title").value
+          articles << url
+          articles << name
+          binding.pry
         end #unless loop
     end #each iteration
   end #testing method
@@ -41,14 +45,6 @@ class Articles #CLIApp::Articles
   #
   # end
   #
-  # def self.scrape_tech
-  #
-  #   website = File.read('https://technical.ly/')
-  #   technically = Nokogiri::HTML(website)
-  #
-  # end
-
-
   def self.today
 
     #go to technicaly, find Articles
