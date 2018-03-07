@@ -17,7 +17,6 @@ class Articles #CLIApp::Articles
 
 
   def self.testing
-    puts "We're inside of this method. Woo-hoo!"
     website = HTTParty.get("https://technical.ly/dc/")
     technically = Nokogiri::HTML(website)
     technically.css(".network-post-link")
@@ -33,10 +32,10 @@ class Articles #CLIApp::Articles
         end #unless loop
     end #each iteration
 
-    technically.css(".latest-posts-container a").each do |article| #technically.css(".latest-posts-container a") #technically.css(".latest-posts a")
-      unless article.blank? || article ==
-        url = technically.css(".latest-posts a").attribute("href").value
-        name = technically.css(".latest-posts a").attribute("title").value.gsub("Read more about ", "")
+    technically.css(".latest-post-link").each do |article| #technically.css(".latest-posts-container a") #technically.css(".latest-posts a")
+      unless article.blank?
+        url = article.attribute("href").value
+        name = article.attribute("title").value.gsub("Read more about ", "").gsub("\u2019", "'")
         articles << [self.new(name, url)]
         articles
       end #unless loop
