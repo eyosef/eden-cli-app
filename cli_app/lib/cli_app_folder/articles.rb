@@ -74,10 +74,33 @@ class Articles #CLIApp::Articles
     # article3.author = "Roberto Torres"
     # article3.url = "https://technical.ly/philly/2018/03/05/free-coding-camp-philly-study-hall/"
 
+    website = HTTParty.get("https://technical.ly/dc/")
+    technically = Nokogiri::HTML(website)
+    technically.css(".network-post-link")
+
+    technically.css(".network-posts").children.each do |article|
+        unless article.blank?
+          url = article.attribute("href").value
+          name = article.attribute("title").value.gsub("Read more about ", "")
+          @@articles << [self.new(name, url)]
+          @@articles
+        end #unless loop
+        @@articles
+    end #each iteration
+
+    technically.css(".latest-post-link").each do |article| #technically.css(".latest-posts-container a") #technically.css(".latest-posts a")
+      unless article.blank?
+        url = article.attribute("href").value
+        name = article.attribute("title").value.gsub("Read more about ", "").gsub("\u2019", "'")
+        @@articles << [self.new(name, url)]
+        @@articles
+      end #unless loop
+    end #each iteration
     @@articles
-    
-  end
+
+  end #today method
+
+
+
 
 end #class
-
-Articles.today

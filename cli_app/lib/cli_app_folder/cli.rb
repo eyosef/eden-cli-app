@@ -1,4 +1,5 @@
 #our CLI controller - responsible for business logic/user interactions
+require 'pry'
 class Initialize#CLIApp::CLI
 
   def call
@@ -6,10 +7,13 @@ class Initialize#CLIApp::CLI
     selection
   end
 
-  def list_articles
+  def self.list_articles
     #should call on an articles method that scrapes/puts this data
     puts "Check out these articles:"
+    binding.pry
     @@articles = Articles.today #CLIApp::Articles.today
+
+
     @@articles.each.with_index(1) do |article, i|
       puts "#{i}. #{article.name}"
       puts        "Published on #{article.date}"
@@ -48,3 +52,5 @@ class Initialize#CLIApp::CLI
   end
 
 end
+
+Initialize.list_articles
