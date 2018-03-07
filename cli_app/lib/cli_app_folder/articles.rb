@@ -30,15 +30,19 @@ class Articles #CLIApp::Articles
           name = article.attribute("title").value.gsub("Read more about ", "")
           articles << [self.new(name, url)]
           articles
-              binding.pry
         end #unless loop
     end #each iteration
-    articles
 
-    technically.css(".latest-posts a") each do |article|
-
-
-
+    technically.css(".latest-posts-container a").each do |article| #technically.css(".latest-posts-container a") #technically.css(".latest-posts a")
+      unless article.blank? || article ==
+        url = technically.css(".latest-posts a").attribute("href").value
+        name = technically.css(".latest-posts a").attribute("title").value.gsub("Read more about ", "")
+        articles << [self.new(name, url)]
+        articles
+      end #unless loop
+    end #each iteration
+      articles
+      binding.pry
   end #testing method
 
 
