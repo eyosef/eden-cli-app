@@ -1,8 +1,8 @@
 #our CLI controller - responsible for business logic/user interactions
-class CLIApp::CLI
+class CLIApp::CLI #CLI
 
   def call
-    puts "Today's articles:"
+
     list_articles
     selection
     goodbye
@@ -27,7 +27,7 @@ class CLIApp::CLI
       puts "type list to receive the complete list of articles,"
       puts "or type exit to leave."
       input = gets.strip
-        if input.to_i > 0
+        if input.to_i > 0 && (input.to_i - 1) <= @articles.length
           the_article = @articles[input.to_i-1]
           puts "#{the_article.name}"
           puts        "Published on #{the_article.date}"
@@ -48,14 +48,3 @@ class CLIApp::CLI
   end
 
 end
-
-# case input
-#   when "1"
-#     puts "Thank you for selecting article #1. Your article is coming up... "
-#   when "2"
-#     puts "Thank you for selecting article #2. Your article is coming up... "
-#   when "3"
-#     puts "Thank you for selecting article #3. Your article is coming up... "
-#   when "list"
-#     list_articles
-#   else

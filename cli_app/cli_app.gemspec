@@ -5,13 +5,12 @@ require "cli_app_folder/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "cli_app"
-  spec.version       = CliApp::VERSION
-  spec.authors       = ["TODO: Write your name"]
-  spec.email         = ["TODO: Write your email address"]
+  spec.version       = CLIApp::VERSION
+  spec.authors       = ["Eden"]
+  spec.email         = ["emesfun@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Project that lists articles from a scrapped website.}
+  spec.homepage      = "https://github.com/eyosef/eden-cli-app"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
