@@ -17,7 +17,9 @@ class Initialize #CLIApp::CLI
       puts "#{i}. #{article[i-1].name}"
       # puts        "Published on #{article.date}"
       # puts        "Author: #{article.author}"
-      puts        "URL: #{article[i-1].url}"
+      puts "URL: #{article[i-1].url}"
+
+      binding.pry
     end #each iteration
   end
 
