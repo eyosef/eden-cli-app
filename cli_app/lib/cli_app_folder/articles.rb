@@ -4,7 +4,7 @@ require 'pry'
 
 
 
-class Articles #CLIApp::Articles
+class Initialize::Articles #CLIApp::Articles
 
   attr_accessor :name, :date, :author, :url, :website, :articles
 
