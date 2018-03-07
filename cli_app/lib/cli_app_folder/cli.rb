@@ -17,8 +17,6 @@ class Initialize #CLIApp::CLI
         puts "#{i}."
       array.each.with_index do |article, i|
         puts "Title: #{article.name}"
-        # puts        "Published on #{article.date}"
-        # puts        "Author: #{article.author}"
         puts "URL: #{article.url}"
       end #each iteration
     end #each iteration
