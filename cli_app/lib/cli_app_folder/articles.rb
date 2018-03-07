@@ -25,16 +25,13 @@ class Articles #CLIApp::Articles
 
     article = {}
 
-    #technically.css(".network-posts").children.each do |article|
-    technically.css(".network-posts-link").children.each do |article|
-          binding.pry
-          if article.include?("href")
-            url = article.attribute("href").value
-          else article.include?("title")
-           title = article.attribute("title").value
-          end
-    end
-  end
+    technically.css(".network-posts").children.each do |article|
+        unless article.blank?
+          url = article.attribute("href").value
+          title = article.attribute("title").value
+        end #unless loop
+    end #each iteration
+  end #testing method
 
 
   # def self.today
