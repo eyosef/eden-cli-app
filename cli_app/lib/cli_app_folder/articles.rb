@@ -8,12 +8,11 @@ class Articles #CLIApp::Articles
 
   attr_accessor :name, :date, :author, :url, :website
 
-  def initialize
+  def initialize(name, url)
     @name = name
     @date = date
     @author = author
     @url = url
-    @website = website
   end
 
 
@@ -27,14 +26,19 @@ class Articles #CLIApp::Articles
 
     technically.css(".network-posts").children.each do |article|
         unless article.blank?
-          
-          @url = article.attribute("href").value
-          @name = article.attribute("title").value
-          articles << url
-          articles << name
-          binding.pry
+          url = article.attribute("href").value
+          name = article.attribute("title").value.gsub("Read more about ", "")
+          articles << [self.new(name, url)]
+          articles
+              binding.pry
         end #unless loop
     end #each iteration
+    articles
+
+    technically.css(".latest-posts a") each do |article|
+
+
+
   end #testing method
 
 
