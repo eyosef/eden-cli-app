@@ -13,13 +13,17 @@ class Initialize #CLIApp::CLI
     #should call on an articles method that scrapes/puts this data
     puts "Check out these articles:"
     @@articles = Articles.today #CLIApp::Articles.today
-    @@articles.each.with_index(1) do |article, i|
-      puts "#{i}. #{article[i-1].name}"
-      # puts        "Published on #{article.date}"
-      # puts        "Author: #{article.author}"
-      puts "URL: #{article[i-1].url}"
+    @@articles.each.with_index(1) do |array, i|
+        puts "#{i}."
+      array.each.with_index do |article, i|
 
-      binding.pry
+        puts "Title: #{article.name}"
+        # puts        "Published on #{article.date}"
+        # puts        "Author: #{article.author}"
+        puts "URL: #{article.url}"
+
+
+      end #each iteration
     end #each iteration
   end
 
