@@ -28,7 +28,6 @@ class Articles #CLIApp::Articles
           @@articles << [self.new(name, url)]
           @@articles
         end #unless loop
-        @@articles
     end #each iteration
 
     technically.css(".latest-post-link").each do |article| #technically.css(".latest-posts-container a") #technically.css(".latest-posts a")
@@ -39,19 +38,10 @@ class Articles #CLIApp::Articles
         @@articles
       end #unless loop
     end #each iteration
-      @@articles
   end #testing method
 
 
-  # def self.today
-  #   #scrape Technicaly
-  #   #return articles based on that data
-  #   self.scrape_articles
-  #
-  # end
-  #
   def self.today
-
     website = HTTParty.get("https://technical.ly/dc/")
     technically = Nokogiri::HTML(website)
     technically.css(".network-post-link")
@@ -61,19 +51,18 @@ class Articles #CLIApp::Articles
           url = article.attribute("href").value
           name = article.attribute("title").value.gsub("Read more about ", "")
           @@articles << [self.new(name, url)]
-          @@articles
         end #unless loop
-        @@articles
     end #each iteration
+    
 
     technically.css(".latest-post-link").each do |article| #technically.css(".latest-posts-container a") #technically.css(".latest-posts a")
       unless article.blank?
         url = article.attribute("href").value
         name = article.attribute("title").value.gsub("Read more about ", "").gsub("\u2019", "'")
         @@articles << [self.new(name, url)]
-        @@articles
       end #unless loop
     end #each iteration
+
     @@articles
 
   end #today method

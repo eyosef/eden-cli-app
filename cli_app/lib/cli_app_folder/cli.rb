@@ -4,13 +4,25 @@ require_relative 'articles'
 
 class Initialize #CLIApp::CLI
 
+  @@basket = []
+
+  @@articles = Articles.today
+
   def call
     list_articles
     selection
   end
 
+  def goodbye
+    puts "Have a great day, and feel free to circle back!"
+  end
+
+  def self.basket
+    @@basket.each {|array| array = array.uniq binding.pry}
+    @@basket
+  end
+
   def list_articles
-    #should call on an articles method that scrapes/puts this data
     puts "Check out these articles:"
     @@articles = Articles.today #CLIApp::Articles.today
     @@articles.each.with_index(1) do |array, i|
@@ -27,12 +39,15 @@ class Initialize #CLIApp::CLI
     while input != "exit"
       puts "Please enter the number of the article you would like to read,"
       puts "type list to receive the complete list of articles,"
+      puts "type basket to receive the list of articles you selected,"
       puts "or type exit to leave."
       input = gets.strip
         if input == "list"
           list_articles
         elsif input == "exit"
           goodbye
+        elsif input == "basket"
+          basket
         elsif input.to_i - 1 < 0
           puts "I'm not sure what you mean by that."
         elsif input.to_i - 1 >= @@articles.length
@@ -42,13 +57,16 @@ class Initialize #CLIApp::CLI
             the_article.each.with_index(1) do |article, i|
                 puts "Article: #{article.name}."
                 puts "URL: #{article.url}"
+
+                @@basket << ["Article: #{article.name}, URL: #{article.url}"]
+
             end #each with index
         end #if statement
     end #while loop
   end #selection method
 
-  def goodbye
-    puts "Have a great day, and feel free to circle back!"
-  end
+
 
 end
+
+Initialize.basket
