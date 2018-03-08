@@ -17,9 +17,8 @@ class Initialize #CLIApp::CLI
     puts "Have a great day, and feel free to circle back!"
   end
 
-  def self.basket
-    @@basket.each {|array| array = array.uniq binding.pry}
-    @@basket
+  def basket
+    print @@basket.uniq
   end
 
   def list_articles
@@ -58,7 +57,7 @@ class Initialize #CLIApp::CLI
                 puts "Article: #{article.name}."
                 puts "URL: #{article.url}"
 
-                @@basket << ["Article: #{article.name}, URL: #{article.url}"]
+                @@basket << "Article: #{article.name}, URL: #{article.url}"
 
             end #each with index
         end #if statement
@@ -68,5 +67,3 @@ class Initialize #CLIApp::CLI
 
 
 end
-
-Initialize.basket
