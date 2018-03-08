@@ -22,6 +22,15 @@ class Initialize #CLIApp::CLI
   end
 
   def list_articles
+    puts "-------------------------------------------------"
+    puts "|"                                              "|"
+    puts "|"                                              "|"
+    puts "|"                                              "|"
+    puts "|"      "Welcome to Technical.ly DC!!!!"        "|"
+    puts "|"                                              "|"
+    puts "|"                                              "|"
+    puts "|"                                              "|"
+    puts "-------------------------------------------------"
     puts "Check out these articles:"
     @@articles = Articles.today #CLIApp::Articles.today
     @@articles.each.with_index(1) do |array, i|
