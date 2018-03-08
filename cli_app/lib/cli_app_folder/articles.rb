@@ -52,7 +52,7 @@ class Events
 
   @@events = []
 
-  def initialize (event_name, date, address, description)
+  def initialize(event_name, date)
     @event_name = event_name
     @date = date
     @address = address
@@ -65,15 +65,20 @@ class Events
     events = Nokogiri::HTML(events_website)
     events.css(".job-listing").each do |listing|
 
-      event_name = listing.children.first.text
-      address = listing.children[2].text
-      date = listing.children[3].text
-      binding.pry
-      description =  listing.children[4].text
-      @@events << self.new(event_name, date, address, description)
+        event_name = listing.children.first.text
+        date =  listing.children.children[3].text
+
+      # event_name = listing.children.first.text
+      # address = listing.children[2].text
+      # date = listing.children[3].text
+      #description =  listing.children[4].text
+
+      @@events << [self.new(event_name, date)]
+
     end #each iteration
     @@events.uniq
     binding.pry
+
   end #events method
 
 end #class events
