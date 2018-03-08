@@ -42,6 +42,9 @@ class Articles #CLIApp::Articles
 
   end #today method
 
+  def self.coding_puns
+  end
+
 
 
 
