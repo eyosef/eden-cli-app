@@ -44,7 +44,7 @@ class Initialize #CLIApp::CLI
 
     puts "Please type ARTICLES to receive the complete list of articles."
     puts "From there, you will be able to select an article."
-    puts "If you would like to exit, type ARTICLES. When the list loads, type EXIT."
+    puts "If you would like to exit, type EXIT."
 
       input = gets.chomp
       if input != "EXIT" && input != "ARTICLES"
