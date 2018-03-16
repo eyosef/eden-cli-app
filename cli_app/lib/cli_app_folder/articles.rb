@@ -16,19 +16,18 @@ class Articles #CLIApp::Articles
   end
 
   def self.articles
-    website = HTTParty.get("https://technical.ly/dc/")
-    technically = Nokogiri::HTML(website)
-    technically.css(".network-post-link")
+    @website = HTTParty.get("https://technical.ly/dc/")
+    @technically = Nokogiri::HTML(website)
 
-    newest_posts
-    latest_posts
+    self.newest_posts
+    self.latest_posts
 
     @@articles = @@articles.uniq
 
   end #today method
 
-  def newest_posts
-    technically.css(".network-posts").children.each do |article|
+  def self.newest_posts
+    @technically.css(".network-posts").children.each do |article|
         unless article.blank?
           url = article.attribute("href").value
           name = article.attribute("title").value.gsub("Read more about ", "")
@@ -37,8 +36,8 @@ class Articles #CLIApp::Articles
     end #each iteration
   end
 
-  def latest_posts
-    technically.css(".latest-post-link").each do |article| #technically.css(".latest-posts-container a") #technically.css(".latest-posts a")
+  def self.latest_posts
+    @technically.css(".latest-post-link").each do |article| #technically.css(".latest-posts-container a") #technically.css(".latest-posts a")
       unless article.blank?
         url = article.attribute("href").value
         name = article.attribute("title").value.gsub("Read more about ", "").gsub("\u2019", "'")
